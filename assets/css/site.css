@@ -1,0 +1,360 @@
+:root {
+  /* 既存サイトから採取した濃紺を軸に据える */
+  --navy:        #002B6A;
+  --navy-deep:   #001936;
+  --navy-soft:   #143f86;
+  --ember:       #C4701A;   /* ロゴの紙吹雪から取った琥珀 */
+  --ember-bright:#E2892B;
+
+  --ink:         #11181F;   /* 既存の本文色 */
+  --ink-soft:    #46536280;
+  --ink-muted:   #4B5A6B;
+  --paper:       #FFFFFF;
+  --mist:        #EDF1F7;   /* 無彩色ではなく紺寄りの中間色 */
+  --line:        #D2DBE8;
+  --band:        #F5F8FC;
+
+  --sans:  "IBM Plex Sans", "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+  --display: "DM Sans", "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --wrap: 880px;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --navy:       #0A3577;
+    --navy-deep:  #050D1A;
+    --navy-soft:  #2E5CA8;
+    --ember:      #F0A44A;
+    --ember-bright:#F7BD72;
+
+    --ink:        #E6ECF5;
+    --ink-soft:   #93A3B980;
+    --ink-muted:  #9BABC0;
+    --paper:      #080F1D;
+    --mist:       #101B2E;
+    --line:       #22334D;
+    --band:       #0C1526;
+  }
+}
+
+:root[data-theme="dark"] {
+  --navy:       #0A3577;
+  --navy-deep:  #050D1A;
+  --navy-soft:  #2E5CA8;
+  --ember:      #F0A44A;
+  --ember-bright:#F7BD72;
+
+  --ink:        #E6ECF5;
+  --ink-soft:   #93A3B980;
+  --ink-muted:  #9BABC0;
+  --paper:      #080F1D;
+  --mist:       #101B2E;
+  --line:       #22334D;
+  --band:       #0C1526;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--ember-bright);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.wrap {
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* ---------- ヘッダー ---------- */
+
+.masthead {
+  background: var(--navy);
+  color: #fff;
+  padding-block: 34px 26px;
+}
+
+.masthead .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  margin-right: auto;
+}
+
+.brand img {
+  width: 52px;
+  height: auto;
+  display: block;
+}
+
+.brand span {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(28px, 5vw, 40px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: #fff;
+}
+
+.nav {
+  display: flex;
+  gap: 26px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.nav a {
+  color: #C8D6EE;
+  text-decoration: none;
+  padding-block: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: #fff;
+  border-bottom-color: var(--ember-bright);
+}
+
+/* ---------- セクション ---------- */
+
+main { padding-block: 56px 0; }
+
+.section + .section { margin-top: 56px; }
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.section-head h1,
+.section-head h2 {
+  font-family: var(--display);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.section-head::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* ---------- ゲーム（枠を持つ唯一の要素） ---------- */
+
+.game {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  align-items: center;
+  border: 1px solid var(--navy);
+  padding: 22px;
+  background: var(--paper);
+}
+
+.game__icon {
+  width: 104px;
+  height: 104px;
+  border-radius: 22px;
+  display: block;
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+}
+
+.game__body {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.game__title {
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.stores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stores a {
+  display: block;
+  transition: opacity .15s;
+}
+
+.stores a:hover { opacity: .8; }
+
+.stores img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+/* ---------- 紹介 ---------- */
+
+.lede {
+  font-size: 18px;
+  margin: 0;
+  max-width: 60ch;
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ember);
+  border: 1px solid var(--ember);
+  padding: 2px 9px;
+  margin-bottom: 14px;
+}
+
+/* ---------- 連絡先 ---------- */
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+}
+
+.contact a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 9px;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 3px;
+  transition: border-color .15s;
+}
+
+.contact a:hover { border-bottom-color: var(--ember-bright); }
+
+.contact .label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+/* ---------- フッター ---------- */
+
+.foot {
+  margin-top: 64px;
+  border-top: 1px solid var(--line);
+  padding-block: 22px 30px;
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+/* ---------- 本文ページ（プライバシーポリシー） ---------- */
+
+.langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin-bottom: 44px;
+  padding: 0;
+  list-style: none;
+}
+
+.langs a {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: var(--ink-muted);
+  border: 1px solid var(--line);
+  padding: 4px 11px;
+  transition: color .15s, border-color .15s;
+}
+
+.langs a:hover {
+  color: var(--ember);
+  border-color: var(--ember);
+}
+
+.prose {
+  max-width: 68ch;
+  scroll-margin-top: 24px;
+}
+
+.prose h3 {
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 700;
+  margin: 32px 0 6px;
+  letter-spacing: 0.01em;
+}
+
+.prose p {
+  margin: 0 0 14px;
+}
+
+.prose ul {
+  margin: 0 0 14px;
+  padding-left: 1.2em;
+}
+
+.prose li {
+  margin-bottom: 4px;
+}
+
+.prose .note {
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+@media (max-width: 560px) {
+  .masthead .wrap { gap: 14px; }
+  .brand { margin-right: 0; width: 100%; }
+  .nav { gap: 18px; font-size: 14px; }
+  .game { padding: 18px; }
+  .game__icon { width: 84px; height: 84px; border-radius: 18px; }
+}
