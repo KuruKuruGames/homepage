@@ -71,8 +71,7 @@ DNS 切り替え前だとリダイレクト先は旧 WordPress サイトのま�
 | TXT | `titan3._domainkey` | DKIM 公開鍵 |
 | TXT | `_dmarc` | `v=DMARC1;p=none;sp=none;adkim=r;aspf=r;pct=100` |
 
-**変更するのは A レコードだけ。** 切り戻し用の全レコード控えは
-`.claude/notes/kurukurugames_static_migration.md`（Dominion リポジトリ）にある。
+**変更するのは A レコードだけ。** 作業前に DNS 画面の全レコードを控えておくこと。
 
 ## 更新のしかた
 
