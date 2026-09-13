@@ -9,6 +9,7 @@ WordPress.com から移行したもの。配色・書体・レイアウトは移
 ```
 index.html                  トップ（配信中のゲーム / 紹介 / 連絡先）
 privacy-policy/index.html   プライバシーポリシー（日本語 / English / 한국어 / 繁體中文）
+contact/index.html          お問い合わせ（メール / X）
 assets/css/site.css         全ページ共通のスタイル
 assets/img/                 ロゴ・アイコン・ストアバッジ
 .nojekyll                   GitHub Pages の Jekyll 処理を無効化
@@ -16,6 +17,11 @@ CNAME.pending               独自ドメイン適用時に CNAME へリネーム
 ```
 
 ビルド工程は無い。HTML と CSS をそのまま配信する。
+
+`/contact/` は **App Store Connect / Google Play Console の「サポート URL」から
+参照される想定**なので、URL を変えたり削除したりしない。フォームは置いていない
+（静的サイトには送信を受けるサーバーが無く、ストアの要件もフォームではなく
+「連絡手段が書かれた到達可能なページ」であるため）。
 
 - ページ間のリンクは**すべて相対パス**で書く。`/assets/...` のようなルート相対パスは
   `https://<org>.github.io/<repo>/` 配下では壊れるため使わない

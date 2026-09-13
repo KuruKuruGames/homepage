@@ -278,6 +278,9 @@ main { padding-block: 56px 0; }
   color: var(--ink-muted);
 }
 
+/* 連絡先ページのみ、導入文のすぐ下に連絡先が並ぶ */
+.lede + .contact { margin-top: 22px; }
+
 /* ---------- フッター ---------- */
 
 .foot {
